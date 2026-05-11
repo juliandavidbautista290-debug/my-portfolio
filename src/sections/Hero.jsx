@@ -1,40 +1,53 @@
+import { motion } from "framer-motion"
 import profile from "../assets/profile.png"
 
-function Hero () {
-    return (
-        <section className="hero">
+function Hero() {
+  return (
+    <section className="hero" id="home">
 
-            <div className="hero-content">
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0, x: -80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
 
-              <h3>Hello, I'm</h3>
+        <h3>Hello, I'm</h3>
 
-              <h1>Julian David</h1>
+        <h1>Julian David</h1>
 
-              <h2>Frontend Developer</h2>
+        <h2>Frontend Developer</h2>
 
-              <p>
-            I build modern, responsive and attractive web interfaces
-            using JavaScript, React and frontend technologies.
-              </p>
+        <p>
+          I build modern, responsive and attractive web interfaces
+          using JavaScript, React and frontend technologies.
+        </p>
 
-              <div className="hero-buttons">
+        <div className="hero-buttons">
 
-                <button className="btn-outline">
-                    Contact Me
-                </button>
-                
-              </div>
+          <a href="#contact">
+            <button className="btn-outline">
+              Contact Me
+            </button>
+          </a>
 
-            </div>
+        </div>
 
-            <div className="hero-image">
+      </motion.div>
 
-                <img src={profile} alt="profile" />
+      <motion.div
+        className="hero-image"
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
 
-            </div>
+        <img src={profile} alt="profile" />
 
-        </section>
-    )
+      </motion.div>
+
+    </section>
+  )
 }
 
 export default Hero

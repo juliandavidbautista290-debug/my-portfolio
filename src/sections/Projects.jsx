@@ -1,41 +1,93 @@
+import googleClone from "../assets/google-clone.png"
+import digitalClock from "../assets/digital-clock.png"
+import portfolio from "../assets/portfolio.png"
+
 function Projects() {
-
-     const projects = [
-        {
-            title: "Google Clone",
-            description:
-            "A responsive Google homepage clone built using HTML5, CSS3, and JavaScript",
-        },
-
-        {
-             title: "Portafolio Website",
-             description:
-             "My personal Frontend Developer Portafolio created with React and Vite.",
-        }
-     ]
-
-     return (
-    <section className="projects">
+  return (
+    <section className="projects" id="projects">
 
       <h2>Projects</h2>
 
       <div className="projects-container">
 
-        {projects.map((project, index) => (
+        <div className="project-card">
 
-          <div className="project-card" key={index}>
+          <img src={googleClone} alt="Google Clone" />
 
-            <h3>{project.title}</h3>
+          <h3>Google Clone</h3>
 
-            <p>{project.description}</p>
+          <p>
+            Responsive Google homepage clone built with
+            HTML, CSS and JavaScript.
+          </p>
 
-            <button>
-              View Project
-            </button>
+          <div className="project-buttons">
+
+  <a
+    href="https://juliandavidbautista290-debug.github.io/REELOJ-DIGITAL/"
+    target="_blank"
+  >
+    <button>Live Demo</button>
+  </a>
+
+  <a
+    href="https://github.com/juliandavidbautista290-debug/REELOJ-DIGITAL"
+    target="_blank"
+  >
+    <button>GitHub</button>
+  </a>
+
+</div>
+
+        </div>
+
+        <div className="project-card">
+
+          <img src={digitalClock} alt="Digital Clock" />
+
+          <h3>Digital Clock</h3>
+
+          <p>
+            Dynamic digital clock application created
+            using JavaScript DOM manipulation.
+          </p>
+
+          <div className="project-buttons">
+
+            <a
+              href="https://github.com/juliandavidbautista290-debug"
+              target="_blank"
+            >
+              <button>GitHub</button>
+            </a>
 
           </div>
 
-        ))}
+        </div>
+
+        <div className="project-card">
+
+          <img src={portfolio} alt="Portfolio" />
+
+          <h3>React Portfolio</h3>
+
+          <p>
+            Modern responsive portfolio developed with
+            React and Framer Motion.
+          </p>
+
+          <div className="project-buttons">
+
+            <a
+              href="https://github.com/juliandavidbautista290-debug"
+              target="_blank"
+            >
+              <button>GitHub</button>
+            </a>
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -44,4 +96,3 @@ function Projects() {
 }
 
 export default Projects
-        

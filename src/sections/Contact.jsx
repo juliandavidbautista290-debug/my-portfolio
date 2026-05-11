@@ -9,23 +9,31 @@ function Contact() {
             frontend projects or job opportunities.
         </p>
 
-        <div className="contact-links">
+        <div className="contact-links" id="contact">
 
              <a 
                 href="https://github.com/juliandavidbautista290-debug"
                 target="_blank"
+                rel="noopener noreferrer"
                 >
                  GitHub
 
                 </a>
 
                 <a
-                 href="www.linkedin.com/in/julian-david-bautista-velosa-2245a8396"
+                 href="https://www.linkedin.com/in/julian-david-bautista-velosa-2245a8396"
                  target="_blank"
+                 rel="noopener noreferrer"
                  >
-                      linkedIn
+                    LinkendIn
+
                  </a>
 
+                  <a href="mailto:juliandavidbautista290@gmail.com">
+                         
+                        Email
+                        
+                  </a>
 
         </div>
 

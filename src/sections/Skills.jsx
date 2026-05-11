@@ -1,33 +1,54 @@
-function skills() {
-    
-    const skills = [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "React",
-        "Angular",
-        "Git",
-        "GitHub",
-        "Responsive Desing"
-    ]
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaGitAlt,
+  FaGithub
+} from "react-icons/fa"
 
-    return (
-        <section className="skills">
+function Skills() {
+  return (
+    <section className="skills" id="skills">
 
-         <h2>My Skills</h2>
+      <h2>My Skills</h2>
 
-         <div className="skills-container">
+      <div className="skills-container">
 
-               {skills.map((skill, index) => (
-          <div className="skill-card" key={index}>
-            {skill}
-          </div>
-        ))}
+        <div className="skill-card">
+          <FaHtml5 className="skill-icon html" />
+          <h3>HTML5</h3>
+        </div>
 
-         </div>
+        <div className="skill-card">
+          <FaCss3Alt className="skill-icon css" />
+          <h3>CSS3</h3>
+        </div>
 
-        </section>
-    )
+        <div className="skill-card">
+          <FaJs className="skill-icon js" />
+          <h3>JavaScript</h3>
+        </div>
+
+        <div className="skill-card">
+          <FaReact className="skill-icon react" />
+          <h3>React</h3>
+        </div>
+
+        <div className="skill-card">
+          <FaGitAlt className="skill-icon git" />
+          <h3>Git</h3>
+        </div>
+
+        <div className="skill-card">
+          <FaGithub className="skill-icon github" />
+          <h3>GitHub</h3>
+        </div>
+
+      </div>
+
+    </section>
+  )
 }
 
-export default skills
+export default Skills
