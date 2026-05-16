@@ -1,23 +1,67 @@
+import Reveal from "../components/Reveal";
+
 function About() {
-    return (
-        <section className="about" id="about">
-       
-       <h2>About Me</h2>
+  return (
+    <Reveal>
+      <section className="about" id="about">
 
-       <p>
-         I am a Frontend Developer passionate about building
-        modern, responsive and user-friendly web applications.
+        <h2 className="section-title">
+          About <span>Me</span>
+        </h2>
 
-        I have experience working with HTML5, CSS3,
-        JavaScript and React, creating personal projects
-        focused on responsive design and frontend development.
+        <div className="about-container">
 
-        Currently, I continue improving my skills through
-        practice, self-learning and real-world projects.
-       </p>
+          
+          <div className="about-text">
 
-        </section>
-    )
+            <p className="about-intro">
+              I am a <span>Frontend Developer</span> passionate about building
+              modern and animated web experiences.
+            </p>
+
+            <div className="about-grid">
+
+              <div className="about-card">
+                <h3>⚡ Development</h3>
+                <p>React, JavaScript, HTML, CSS</p>
+              </div>
+
+              <div className="about-card">
+                <h3>🎯 Focus</h3>
+                <p>UI/UX + Animations + Clean Code</p>
+
+              </div>
+
+               <div className="about-card">
+                <h3>🧠 Philosophy</h3>
+                <p>
+                  I believe in building clean, fast and meaningful web experiences
+                  that feel alive.
+                </p>
+                
+              </div>
+
+            </div>
+
+          </div>
+
+          
+          <div className="about-image">
+
+            <div className="image-frame">
+              <img
+                src="/cyberpunk-me.png"
+                alt="Cyberpunk Developer"
+              />
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+    </Reveal>
+  );
 }
 
-export default About
+export default About;

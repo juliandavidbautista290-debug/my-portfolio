@@ -1,37 +1,48 @@
+import { useEffect, useState } from "react";
+
 function Navbar() {
-    return (
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-        <nav className="navbar">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-            <h2 className="logo">
-                Julian.Dev
-            </h2>
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    <ul className="nav-links">
+  const links = ["home", "about", "skills", "experience", "stats", "projects", "contact"];
 
-        <li>
-            <a href="#home">Home</a>
-        </li>
+  return (
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
 
-        <li>
-            <a href="#about">About</a>
-        </li>
+      <div className="logo">JULIÁN.DEV</div>
 
-        <li>
-            <a href="#skills">Skills</a>
-        </li>
+      <div className={`nav-links ${open ? "active" : ""}`}>
+        {links.map((link) => (
+          <a
+            key={link}
+            href={`#${link}`}
+            className={active === link ? "active" : ""}
+            onClick={() => {
+              setActive(link);
+              setOpen(false);
+            }}
+          >
+            {link.charAt(0).toUpperCase() + link.slice(1)}
+          </a>
+        ))}
+      </div>
 
-        <li>
-            <a href="#projects">Projects</a>
-        </li>
+      <div className="menu-icon" onClick={() => setOpen(!open)}>
+        ☰
+      </div>
 
-        <li>
-            <a href="#contact">Contact</a>
-        </li>
-
-    </ul>
-            </nav>
-    )
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

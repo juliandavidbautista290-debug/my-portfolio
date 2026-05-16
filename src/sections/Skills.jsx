@@ -4,50 +4,152 @@ import {
   FaJs,
   FaReact,
   FaGitAlt,
-  FaGithub
+  FaGithub,
+  FaCode,
+  FaStar
 } from "react-icons/fa"
 
+import Reveal from "../components/Reveal"
+
+import { motion } from "framer-motion"
+
 function Skills() {
+
+  const skills = [
+
+    {
+      icon: <FaHtml5 />,
+      name: "HTML5"
+    },
+
+    {
+      icon: <FaCss3Alt />,
+      name: "CSS3"
+    },
+
+    {
+      icon: <FaJs />,
+      name: "JavaScript"
+    },
+
+    {
+      icon: <FaReact />,
+      name: "React"
+    },
+
+    {
+      icon: <FaGitAlt />,
+      name: "Git"
+    },
+
+    {
+      icon: <FaGithub />,
+      name: "GitHub"
+    }
+
+  ]
+
+  const containerVariants = {
+
+    hidden: {},
+
+    visible: {
+
+      transition: {
+        staggerChildren: 0.2
+      }
+
+    }
+
+  }
+
+  const cardVariants = {
+
+    hidden: {
+      opacity: 0,
+      y: 80
+    },
+
+    visible: {
+      opacity: 1,
+      y: 0,
+
+      transition: {
+        duration: 0.7
+      }
+    }
+
+  }
+
   return (
-    <section className="skills" id="skills">
 
-      <h2>My Skills</h2>
+    <Reveal>
 
-      <div className="skills-container">
+      <section
+        className="skills"
+        id="skills"
+      >
 
-        <div className="skill-card">
-          <FaHtml5 className="skill-icon html" />
-          <h3>HTML5</h3>
+        <h2 className="section-title">
+          My <span>Skills</span>
+        </h2>
+
+        <div className="skills-decorations">
+
+          <FaCode className="skill-shape shape1" />
+
+          <FaStar className="skill-shape shape2" />
+
+          <div className="glow-circle glow1"></div>
+
+          <div className="glow-circle glow2"></div>
+
         </div>
 
-        <div className="skill-card">
-          <FaCss3Alt className="skill-icon css" />
-          <h3>CSS3</h3>
-        </div>
+        <motion.div
+          className="skills-container"
 
-        <div className="skill-card">
-          <FaJs className="skill-icon js" />
-          <h3>JavaScript</h3>
-        </div>
+          variants={containerVariants}
 
-        <div className="skill-card">
-          <FaReact className="skill-icon react" />
-          <h3>React</h3>
-        </div>
+          initial="hidden"
 
-        <div className="skill-card">
-          <FaGitAlt className="skill-icon git" />
-          <h3>Git</h3>
-        </div>
+          whileInView="visible"
 
-        <div className="skill-card">
-          <FaGithub className="skill-icon github" />
-          <h3>GitHub</h3>
-        </div>
+          viewport={{ once: false }}
+        >
 
-      </div>
+          {skills.map((skill, index) => (
 
-    </section>
+            <motion.div
+
+              className="skill-card"
+
+              key={index}
+
+              variants={cardVariants}
+
+              whileHover={{
+                scale: 1.08,
+                rotate: 2
+              }}
+
+            >
+
+              <div className="skill-icon">
+                {skill.icon}
+              </div>
+
+              <h3>{skill.name}</h3>
+
+            </motion.div>
+
+          ))}
+
+        </motion.div>
+
+      </section>
+
+    </Reveal>
   )
 }
 

@@ -1,97 +1,340 @@
-import googleClone from "../assets/google-clone.png"
-import digitalClock from "../assets/digital-clock.png"
+import weatherApp from "../assets/weather-app.png"
+import ecommerceApp from "../assets/ecommerce-app.png"
 import portfolio from "../assets/portfolio.png"
 
+import { motion } from "framer-motion"
+import Tilt from "react-parallax-tilt"
+import { useState } from "react"
+
+import Reveal from "../components/Reveal"
+
 function Projects() {
+
+  const [selectedProject, setSelectedProject] = useState(null)
+
+  const projects = [
+
+    {
+      title: "Weather Forecast App",
+
+      description:
+        "Modern weather application built with JavaScript using API data and responsive design.",
+
+      image: weatherApp,
+
+      tech: ["React", "CSS", "API"],
+
+      live:
+        "https://weather-app-nu-swart-60.vercel.app/",
+
+      github:
+        "https://weather-app-nu-swart-60.vercel.app/"
+    },
+
+    {
+      title: "Modern Ecommerce Store",
+
+      description:
+        "Responsive ecommerce interface with modern UI, product sections and clean frontend structure.",
+
+      image: ecommerceApp,
+
+      tech: ["React", "CSS", "JavaScript"],
+
+      live:
+        "https://ecommerce-react-app-tawny.vercel.app/",
+
+      github:
+        "https://ecommerce-react-app-tawny.vercel.app/"
+    },
+
+    {
+      title: "Developer Portfolio",
+
+      description:
+        "Personal portfolio developed with React, animations and responsive modern design.",
+
+      image: portfolio,
+
+      tech: ["React", "Framer Motion", "CSS"],
+
+      live:
+        "https://my-portfolio-delta-two-97.vercel.app/",
+
+      github:
+        "https://my-portfolio-delta-two-97.vercel.app/"
+    }
+
+  ]
+
   return (
-    <section className="projects" id="projects">
 
-      <h2>Projects</h2>
+    <>
 
-      <div className="projects-container">
+      <Reveal>
 
-        <div className="project-card">
+        <section
+          className="projects"
+          id="projects"
+        >
 
-          <img src={googleClone} alt="Google Clone" />
+          <h2 className="section-title">
+            My <span>Projects</span>
+          </h2>
 
-          <h3>Google Clone</h3>
+          <div className="projects-container">
 
-          <p>
-            Responsive Google homepage clone built with
-            HTML, CSS and JavaScript.
-          </p>
+            {projects.map((project, index) => (
 
-          <div className="project-buttons">
+              <Tilt
+                glareEnable={true}
+                glareMaxOpacity={0.15}
+                scale={1.02}
+                tiltMaxAngleX={12}
+                tiltMaxAngleY={12}
+                perspective={1200}
+                transitionSpeed={1500}
+                gyroscope={true}
+                key={index}
+              >
 
-  <a
-    href="https://juliandavidbautista290-debug.github.io/REELOJ-DIGITAL/"
-    target="_blank"
-  >
-    <button>Live Demo</button>
-  </a>
+                <motion.div
+                  className="project-card"
 
-  <a
-    href="https://github.com/juliandavidbautista290-debug/REELOJ-DIGITAL"
-    target="_blank"
-  >
-    <button>GitHub</button>
-  </a>
+                  onMouseMove={(e) => {
 
-</div>
+                    const rect =
+                      e.currentTarget.getBoundingClientRect()
 
-        </div>
+                    const x =
+                      e.clientX - rect.left
 
-        <div className="project-card">
+                    const y =
+                      e.clientY - rect.top
 
-          <img src={digitalClock} alt="Digital Clock" />
+                    e.currentTarget.style.setProperty(
+                      "--x",
+                      `${x}px`
+                    )
 
-          <h3>Digital Clock</h3>
+                    e.currentTarget.style.setProperty(
+                      "--y",
+                      `${y}px`
+                    )
 
-          <p>
-            Dynamic digital clock application created
-            using JavaScript DOM manipulation.
-          </p>
+                  }}
 
-          <div className="project-buttons">
+                  initial={{
+                    opacity: 0,
+                    y: 80,
+                    rotateX: 15
+                  }}
 
-            <a
-              href="https://github.com/juliandavidbautista290-debug"
-              target="_blank"
-            >
-              <button>GitHub</button>
-            </a>
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0
+                  }}
+
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    ease: "easeOut"
+                  }}
+
+                  whileHover={{
+                    y: -12,
+                    scale: 1.02
+                  }}
+
+                  viewport={{ once: false }}
+
+                  onClick={() =>
+                    setSelectedProject(project)
+                  }
+                >
+
+               
+                  <div className="project-glow"></div>
+
+                  
+                  <div className="project-floating-circle"></div>
+
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-image"
+                  />
+
+                  <h3>{project.title}</h3>
+
+                  <p>{project.description}</p>
+
+                  <div className="tech-stack">
+
+                    {project.tech.map((tech, index) => (
+
+                      <span key={index}>
+                        {tech}
+                      </span>
+
+                    ))}
+
+                  </div>
+
+                  <div className="project-buttons">
+
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+
+                      <button>
+                        Live Demo
+                      </button>
+
+                    </a>
+
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+
+                      <button className="btn-outline">
+                        GitHub
+                      </button>
+
+                    </a>
+
+                  </div>
+
+                </motion.div>
+
+              </Tilt>
+
+            ))}
 
           </div>
 
-        </div>
+        </section>
 
-        <div className="project-card">
+      </Reveal>
 
-          <img src={portfolio} alt="Portfolio" />
+      {/* MODAL */}
 
-          <h3>React Portfolio</h3>
+      {selectedProject && (
 
-          <p>
-            Modern responsive portfolio developed with
-            React and Framer Motion.
-          </p>
+        <motion.div
+          className="modal-overlay"
 
-          <div className="project-buttons">
+          onClick={() =>
+            setSelectedProject(null)
+          }
 
-            <a
-              href="https://github.com/juliandavidbautista290-debug"
-              target="_blank"
+          initial={{ opacity: 0 }}
+
+          animate={{ opacity: 1 }}
+
+          exit={{ opacity: 0 }}
+        >
+
+          <motion.div
+            className="modal-content"
+
+            onClick={(e) =>
+              e.stopPropagation()
+            }
+
+            initial={{
+              scale: 0.7,
+              opacity: 0,
+              rotateX: 20
+            }}
+
+            animate={{
+              scale: 1,
+              opacity: 1,
+              rotateX: 0
+            }}
+
+            transition={{
+              duration: 0.5
+            }}
+          >
+
+            <button
+              className="close-modal"
+              onClick={() =>
+                setSelectedProject(null)
+              }
             >
-              <button>GitHub</button>
-            </a>
+              X
+            </button>
 
-          </div>
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className="modal-image"
+            />
 
-        </div>
+            <h2>
+              {selectedProject.title}
+            </h2>
 
-      </div>
+            <p>
+              {selectedProject.description}
+            </p>
 
-    </section>
+            <div className="tech-stack">
+
+              {selectedProject.tech.map((tech, index) => (
+
+                <span key={index}>
+                  {tech}
+                </span>
+
+              ))}
+
+            </div>
+
+            <div className="modal-buttons">
+
+              <a
+                href={selectedProject.live}
+                target="_blank"
+                rel="noreferrer"
+              >
+
+                <button>
+                  Live Demo
+                </button>
+
+              </a>
+
+              <a
+                href={selectedProject.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+
+                <button className="btn-outline">
+                  GitHub
+                </button>
+
+              </a>
+
+            </div>
+
+          </motion.div>
+
+        </motion.div>
+
+      )}
+
+    </>
+
   )
 }
 
