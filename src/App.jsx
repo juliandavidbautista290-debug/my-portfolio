@@ -31,7 +31,6 @@ import AnimatedBackground from "./components/AnimatedBackground";
 
 function App() {
 
-  // AOS animations
   useEffect(() => {
 
     AOS.init({
@@ -41,7 +40,6 @@ function App() {
 
   }, []);
 
-  // unlock audio
   useEffect(() => {
 
     const unlock = () => {
@@ -69,19 +67,16 @@ function App() {
   return (
     <>
 
-      {/* Background Effects */}
       <AnimatedBackground />
       <NoiseOverlay />
       <MouseParallax />
       <BackgroundOrbs />
       <CursorGlow />
 
-      {/* UI Effects */}
       <ScrollProgress />
       <Loader />
       <CustomCursor />
 
-      {/* Main Content */}
       <Navbar />
 
       <Reveal>
